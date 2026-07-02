@@ -109,7 +109,7 @@ const firebaseConfig = {
       btn.classList.add("on");
       
       if (key === "gpio3") {
-        lab.textContent = "Status: Door Unlocked"; // ১ হলে আনলক দেখাবে
+        lab.textContent = "Status: Door locked"; // ১ হলে আনলক দেখাবে
         lab.style.color = "#9effae"; // সবুজ রঙ
       } else {
         lab.textContent = "Status: ON";
@@ -120,7 +120,7 @@ const firebaseConfig = {
       btn.classList.remove("on");
       
       if (key === "gpio3") {
-        lab.textContent = "Status: Door Locked"; // ০ হলে লক দেখাবে
+        lab.textContent = "Status: Door UnLocked"; // ০ হলে লক দেখাবে
         lab.style.color = "#ff9e9e"; // লকড মোডে লালচে রঙ (সহজে চেনার জন্য)
       } else {
         lab.textContent = "Status: OFF";
