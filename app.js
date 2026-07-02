@@ -40,13 +40,13 @@ const firebaseConfig = {
   const gpioButtons = {
     gpio1: document.getElementById("gpio1Btn"),
     gpio2: document.getElementById("gpio2Btn"),
-    gpio3: document.getElementById("gpio3Btn") 
+    gpio3: document.getElementById("gpio3Btn")
   };
 
   const gpioLabels = {
     gpio1: document.getElementById("gpio1Status"),
     gpio2: document.getElementById("gpio2Status"),
-    gpio3: document.getElementById("gpio3Status") 
+    gpio3: document.getElementById("gpio3Status")
   };
 
   // Login
@@ -85,7 +85,7 @@ const firebaseConfig = {
   function startListeners() {
     ["gpio1", "gpio2", "gpio3"].forEach((key) => {
       onValue(ref(db, "/" + key), (snapshot) => {
-        let value = snapshot.val() ? 0 : 1;
+        let value = snapshot.val() ? 1 : 0;
         updateUI(key, value);
       });
     });
@@ -100,17 +100,17 @@ const firebaseConfig = {
     });
   }
 
-  // Update UI
+  // Update UI (লজিক: ১ = অন/২০ ডিগ্রি/খোলা, ০ = অফ/১১০ ডিগ্রি/বন্ধ)
   function updateUI(key, val) {
     let btn = gpioButtons[key];
     let lab = gpioLabels[key];
 
-    if (val === 0) {
+    if (val === 1) {
       btn.classList.add("on");
       
       if (key === "gpio3") {
-        lab.textContent = "Status: Door Locked"; 
-        lab.style.color = "#ff9e9e"; 
+        lab.textContent = "Status: Door Open (20°)"; // ১ দিলে দরজা খোলা এবং ২০ ডিগ্রি দেখাবে
+        lab.style.color = "#9effae"; // খোলা অবস্থায় সবুজ রঙ
       } else {
         lab.textContent = "Status: ON";
         lab.style.color = "#9effae";
@@ -120,8 +120,8 @@ const firebaseConfig = {
       btn.classList.remove("on");
       
       if (key === "gpio3") {
-        lab.textContent = "Status: Door Unlock"; 
-        lab.style.color = "#9effae"; 
+        lab.textContent = "Status: Door Closed (110°)"; // ০ দিলে দরজা বন্ধ এবং ১১০ ডিগ্রি দেখাবে
+        lab.style.color = "#ff9e9e"; // বন্ধ অবস্থায় লাল রঙ
       } else {
         lab.textContent = "Status: OFF";
         lab.style.color = "#d1d1d1";
