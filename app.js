@@ -109,7 +109,7 @@ const firebaseConfig = {
       btn.classList.add("on");
       
       if (key === "gpio3") {
-        lab.textContent = "Status: Door Open (20°)"; // ১ দিলে দরজা খোলা এবং ২০ ডিগ্রি দেখাবে
+        lab.textContent = "Status: Door Unlocked"; // ১ দিলে দরজা খোলা এবং ২০ ডিগ্রি দেখাবে
         lab.style.color = "#9effae"; // খোলা অবস্থায় সবুজ রঙ
       } else {
         lab.textContent = "Status: ON";
@@ -120,7 +120,7 @@ const firebaseConfig = {
       btn.classList.remove("on");
       
       if (key === "gpio3") {
-        lab.textContent = "Status: Door Closed (110°)"; // ০ দিলে দরজা বন্ধ এবং ১১০ ডিগ্রি দেখাবে
+        lab.textContent = "Status: Door Locked"; // ০ দিলে দরজা বন্ধ এবং ১১০ ডিগ্রি দেখাবে
         lab.style.color = "#ff9e9e"; // বন্ধ অবস্থায় লাল রঙ
       } else {
         lab.textContent = "Status: OFF";
