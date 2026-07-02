@@ -105,7 +105,7 @@ const firebaseConfig = {
     let btn = gpioButtons[key];
     let lab = gpioLabels[key];
 
-    if (val === 1) {
+    if (val === 0) {
       btn.classList.add("on");
       
       if (key === "gpio3") {
