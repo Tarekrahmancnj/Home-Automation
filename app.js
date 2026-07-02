@@ -100,7 +100,7 @@ const firebaseConfig = {
     });
   }
 
-  // Update UI (লক এবং আনলক টেক্সট সেট করা হয়েছে)
+  // Update UI (লজিক পরিবর্তন: ১ = Door Unlocked, ০ = Door Locked)
   function updateUI(key, val) {
     let btn = gpioButtons[key];
     let lab = gpioLabels[key];
@@ -109,7 +109,7 @@ const firebaseConfig = {
       btn.classList.add("on");
       
       if (key === "gpio3") {
-        lab.textContent = "Status: Door locked"; // ১ হলে আনলক দেখাবে
+        lab.textContent = "Status: Door Unlocked"; // ১ হলে আনলক দেখাবে
         lab.style.color = "#9effae"; // সবুজ রঙ
       } else {
         lab.textContent = "Status: ON";
@@ -120,8 +120,8 @@ const firebaseConfig = {
       btn.classList.remove("on");
       
       if (key === "gpio3") {
-        lab.textContent = "Status: Door UnLocked"; // ০ হলে লক দেখাবে
-        lab.style.color = "#ff9e9e"; // লকড মোডে লালচে রঙ (সহজে চেনার জন্য)
+        lab.textContent = "Status: Door Locked"; // ০ হলে লক দেখাবে
+        lab.style.color = "#ff9e9e"; // লাল রঙ
       } else {
         lab.textContent = "Status: OFF";
         lab.style.color = "#d1d1d1";
