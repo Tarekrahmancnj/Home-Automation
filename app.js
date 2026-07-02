@@ -1,4 +1,4 @@
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
   import {
     getAuth,
     signInWithEmailAndPassword,
@@ -40,13 +40,13 @@ const firebaseConfig = {
   const gpioButtons = {
     gpio1: document.getElementById("gpio1Btn"),
     gpio2: document.getElementById("gpio2Btn"),
-    gpio3: document.getElementById("gpio3Btn")
+    gpio3: document.getElementById("gpio3Btn") 
   };
 
   const gpioLabels = {
     gpio1: document.getElementById("gpio1Status"),
     gpio2: document.getElementById("gpio2Status"),
-    gpio3: document.getElementById("gpio3Status")
+    gpio3: document.getElementById("gpio3Status") 
   };
 
   // Login
@@ -100,18 +100,31 @@ const firebaseConfig = {
     });
   }
 
-  // Update UI
+  // Update UI (লক এবং আনলক টেক্সট সেট করা হয়েছে)
   function updateUI(key, val) {
     let btn = gpioButtons[key];
     let lab = gpioLabels[key];
 
     if (val === 1) {
       btn.classList.add("on");
-      lab.textContent = "Status: ON";
-      lab.style.color = "#9effae";
+      
+      if (key === "gpio3") {
+        lab.textContent = "Status: Door Unlocked"; // ১ হলে আনলক দেখাবে
+        lab.style.color = "#9effae"; // সবুজ রঙ
+      } else {
+        lab.textContent = "Status: ON";
+        lab.style.color = "#9effae";
+      }
+      
     } else {
       btn.classList.remove("on");
-      lab.textContent = "Status: OFF";
-      lab.style.color = "#d1d1d1";
+      
+      if (key === "gpio3") {
+        lab.textContent = "Status: Door Locked"; // ০ হলে লক দেখাবে
+        lab.style.color = "#ff9e9e"; // লকড মোডে লালচে রঙ (সহজে চেনার জন্য)
+      } else {
+        lab.textContent = "Status: OFF";
+        lab.style.color = "#d1d1d1";
+      }
     }
   }
