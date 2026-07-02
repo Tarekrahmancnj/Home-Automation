@@ -100,7 +100,7 @@ const firebaseConfig = {
     });
   }
 
-  // Update UI (লজিক: ১ = বাটন অন/২০ ডিগ্রি/খোলা, ০ = বাটন অফ/১১০ ডিগ্রি/বন্ধ)
+  // Update UI
   function updateUI(key, val) {
     let btn = gpioButtons[key];
     let lab = gpioLabels[key];
@@ -109,8 +109,8 @@ const firebaseConfig = {
       btn.classList.add("on");
       
       if (key === "gpio3") {
-        lab.textContent = "Status: Door Open (20°)"; // ১ বা অন হলে দরজা খোলা দেখাবে
-        lab.style.color = "#9effae"; // খোলা অবস্থায় সবুজ রঙ
+        lab.textContent = "Status: Door Locked"; 
+        lab.style.color = "#ff9e9e"; 
       } else {
         lab.textContent = "Status: ON";
         lab.style.color = "#9effae";
@@ -120,8 +120,8 @@ const firebaseConfig = {
       btn.classList.remove("on");
       
       if (key === "gpio3") {
-        lab.textContent = "Status: Door Closed (110°)"; // ০ বা অফ হলে দরজা বন্ধ দেখাবে
-        lab.style.color = "#ff9e9e"; // বন্ধ বা লক অবস্থায় লাল রঙ
+        lab.textContent = "Status: Door Unlock"; 
+        lab.style.color = "#9effae"; 
       } else {
         lab.textContent = "Status: OFF";
         lab.style.color = "#d1d1d1";
